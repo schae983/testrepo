@@ -64,38 +64,41 @@ calculators you may have used previously), but can do much more.
 #### Addition
 
 ```{r}
-
+1+2+3
 ```
 
 #### Subtraction
 
 ```{r}
-
+10-5-6
+30-9
 ```
 
 #### Multiplication
 
 ```{r}
-
+8*7
 ```
 
 #### Division
 
 ```{r}
-
-#remainder 
+876/234
+#remainder
+9%%2
 ```
 
 #### Square Root
 
 ```{r}
-
+sqrt(100)
 ```
 
 #### Exponent
 
 ```{r}
-
+7^12
+5^2
 ```
 
 **Important:** In terms of calculations, R follows PEMDAS (algebra
@@ -104,7 +107,7 @@ throwback). Parentheses are going to be **Really** important.
 #### More complicated Math:
 
 ```{r}
-
+(((400*3)/45^2)*333+49+10)*11111
 ```
 
 ### Logical Statements
@@ -138,7 +141,9 @@ However, R can compute mathematical expressions. This means we can look
 at something like this:
 
 ```{r}
+3 == 4
 
+14-9 == 3*2
 ```
 
 You can also evaluate if statements are **NOT** True. We can do this by
@@ -146,7 +151,7 @@ using the symbol `!=` For instance, I could evaluate Michael Scott as a
 manager by writing:
 
 ```{r}
-
+3 != 9
 ```
 
 Note: In other words, == is similar to "is" and != is similar to "is
@@ -159,7 +164,10 @@ less than, greater than or equal to, and less than or equal to.
 Examples:
 
 ```{r}
-
+4 > 3
+5<6
+13*2<=38
+3>=2
 ```
 
 We can also make logical statements more complex by creating **and** and
@@ -169,22 +177,36 @@ be true)
 And statements use `&` OR `&&` (if you have more things to evaluate)
 
 ```{r}
-
+3>2 & 4<3
+3>2 & 4<5
+3>2 && 4<5 && 5<6
 ```
 
 Or statements use `|` OR `||` (if you have more things to evaluate)
 
 ```{r}
-
+9>5 | 3*2>1
 ```
 
 ##### Learning Outcome 1 Practice:
 
 1.  Find the square root of 89
+```{r}
+sqrt(89)
+```
+
 2.  Determine if 3 raised to the 5 power is greater than the square root
     of ten thousand
+```{r}
+3^5>sqrt(10000)
+```
+    
 3.  Determine if 5 times 7 is less than or equal to 30 or if 4*8 is
     equal to 32
+```{r}
+5*7<=30 || 4*8==32
+```
+    
 
 ### Learning Outcome 2: Describe how to use common R functions
 
@@ -202,7 +224,7 @@ writing small#:larger#, and would give you all of the numbers in
 between.
 
 ```{r}
-
+1:100
 ```
 
 `rep()` allows you to repeat something a set number of times. Looking at
@@ -210,7 +232,8 @@ the help file, we can see the arguments contained in the function. To
 use it, we write `rep(thingToBeRepeated, #ofTimes)`.
 
 ```{r}
-
+rep("coffee", 13)
+rep(12, 2)
 ```
 
 **Note:** For functions, you can either write arguments in the order
@@ -218,22 +241,39 @@ listed in the help file (not labelled), or make sure you include the
 argument label.
 
 ```{r}
-
+rep (times = 3, x="coffee")
 ```
 
 `seq()` gives you a sequence of numbers. typically, we use it by writing
 `seq(lowest#, highest#, by=#)`.
 
 ```{r}
-
+seq(1,10, 1)
+seq(5,1000, 5)
 ```
 
 #### Learning Outcome 2 Practice:
 
 1.  Print every 5th number between 1 and 100.
+```{r}
+seq(1,100, 5)
+```
+
 2.  Use code to write I love statistics 4 times.
+```{r}
+rep("i love statistics", 3)
+```
+
 3.  Repeat the numbers 1-10 twice
+```{r}
+rep(seq(1,10), 2)
+```
+
 4.  Print every 3rd number from 1-20 3 times.
+```{r}
+rep(seq(1,20, 3), 3)
+```
+
 
 ###Learning Outcome 3: Explain the differences between variables,
 vectors, and dataframes
