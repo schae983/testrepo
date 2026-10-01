@@ -4,8 +4,6 @@ author: "Amanda Mae Woodward"
 date: "2026-09-24"
 output: html_document
 ---
-by: Rory Schaefer
-
 For your first R Assignment, complete the questions below. Remember, weekly assignments are graded based on attempts and accuracy, so it's ok if you don't get everything immediately. Please submit your answers by 1) updating this file in your GitHub repository and 2) uploading a .html file of the assignment to this repository. Please submit a link to the repository on Canvas. 
 
 # Variables, Vectors, Lists, and Data frames
@@ -24,17 +22,19 @@ participants
 
 3. Create a list called condition that alternates the words control and experimental six times, for a total of 12 words.
 ```{r}
-
+condition<- rep(times=3, c("control", "experimental"))
+print(condition)
 ```
 
 4. Create a dataframe from the variables in #1-3. 
 ```{r}
-
+practiceData<- cbind.data.frame(score, participants, condition)
 ```
 
 5. Take the mean of the score column from your dataframe.
 ```{r}
-
+mean(practiceData$score)
+#mean is 50.5
 ```
 
 
@@ -42,27 +42,29 @@ participants
 
 6. Open the penguins dataframe. Print the dataframe.  
 ```{r}
-
+data(palmerpenguins)
+print(penguins)
 ```
 
 7. Create a subset of data for Adelie penguins. 
 ```{r}
-
+adelieSubset<- subset(penguins, penguins$species=="Adelie")
 ```
 
 8. Summarize this subset of data. 
 ```{r}
-
+summary(adelieSubset)
 ```
 
 8. Create a dataframe that contains penguins with a bill length greater than or equal to the average bill length. 
 ```{r}
-
+bigBill<- subset(penguins, penguins$bill_length_mm>= mean(penguins$bill_length_mm, na.rm=TRUE))
 ```
 
 9. How many penguins are in this subset? 
 ```{r}
-
+nrow(bigBill)
+# 175 penguins
 ```
 
 
@@ -70,25 +72,30 @@ participants
 10. Load the tidyverse library if you haven't already done so.
 ```{r}
 library(tidyverse)
+print(diamonds)
 ```
 
 12. Create a new dataframe that has diamonds greater than 1 carat and an ideal cut. 
 ```{r}
-
+data("diamonds")
+idealAndOneCarat<- subset(diamonds, cut=="Ideal" & carat>1)
 ```
 
 13. Find the mean and standard deviation of price for this new dataset. 
 ```{r}
-
+mean(idealAndOneCarat$price)
+sd(idealAndOneCarat$price)
+#mean is 8674.227 and standard deviation is 3817.028
 ```
 
 14. Create another new dataframe from the original diamonds dataset that includes all diamonds with a price between $2500 and $5000. 
 ```{r}
-
+diamondPrice<- subset(diamonds, price>2500 & price<5000)
 ```
 
 15. Which color occurs most in this new subset? 
 ```{r}
-
+summary(diamondPrice$color)
+#i'm sure there was a more efficient way to go about this, but i just summarized the column and looked at the values. in this case, the color F appeared the most!
 ```
 
