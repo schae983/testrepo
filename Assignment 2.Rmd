@@ -1,0 +1,89 @@
+---
+title: "Foundations in R Assignment pt 2"
+author: "Amanda Mae Woodward"
+date: "2026-09-24"
+output: html_document
+---
+
+For your second R Assignment, complete the questions below. Remember, weekly assignments are graded based on attempts and accuracy, so it's ok if you don't get everything immediately. Please submit your answers by 1) updating this file in your GitHub repository and 2) uploading a .html file of the assignment to this repository. Please submit a link to the repository on Canvas. 
+
+# Set up
+1. Load the tidyverse library. 
+```{r}
+library(tidyverse)
+```
+
+2. Load the billboard data. 
+```{r}
+data("billboard")
+```
+
+3. Describe the dataset. 
+```{r}
+summary(billboard)
+```
+
+4. Print the column names from this dataset. 
+```{r}
+print(colnames(billboard))
+```
+
+5. Print the first 5 entries in the dataset. 
+```{r}
+print(billboard[1:5])
+```
+
+
+# Practice
+1. Create a subset of data that has Jay-Z as the only artist. How many songs are in it?
+```{r}
+justJayZ<- subset(billboard, billboard$artist=="Jay-Z")
+nrow(justJayZ)
+#there are 5 songs in this subset.
+```
+
+2. In the original dataset, use filter to find information about the song "All the small things." What was the highest position (i.e. lowest number) this song reached on the billboard 100? 
+```{r}
+smallThingsDat<- billboard |>  filter(billboard$TRACK=="All The Small Things", na.rm=TRUE)
+summary(smallThingsDat, na.rm=TRUE)
+#the lowest it got on the billboard charts was 6th!
+```
+
+3. Create a subset of data for songs Tim McGraw sang. Summarize the data for wk 1.
+```{r}
+timSongs<- subset(billboard, billboard$artist=="McGraw, Tim")
+print(timSongs$wk1)
+#i used print instead of summarize because this is data about the position of the songs in week one, which is numerical in nature but not data where a mean would be useful, for example. This just tells me he had one song in 85th, one song in 73rd, and one song in 76th on the charts at this time.
+```
+
+4. Create a function that can be used to determine if Britney Spears sang the song. 
+```{r}
+didBritneySingIt<- function(songs){billboard$ARTIST=="Spears, Britney"}
+```
+
+5. Test your function on the billboard data. Save the results to a new column called "wasItBritney"
+```{r}
+billboard$wasItBritney<- didBritneySingIt(billboard$wasItBritney)
+```
+
+6. Use a for loop to determine if a song placed 50 or below or placed above 50 during the first week. 
+```{r}
+billboard$weekOneTopFifty<- NA
+
+for(i in 1:length(billboard$weekOneTopFifty)){
+  if(billboard$WK1[i]>50){
+    billboard$weekOneTopFifty[i]<- "below 50"
+  }
+  else{billboard$weekOneTopFifty[i]<- "above 50"}
+}
+```
+
+7. Use an if else statement to determine the same information as you obtained with the for loop. 
+```{r}
+billboard$whereFifty<- NA
+billboard$whereFifty<- ifelse(billboard$WK1>=50, "below 50", "above 50")
+```
+
+8. Compare your results in 6 and 7. 
+
+My results are the same in each column, which indicates to me that I did something right in sorting them between above and below 50!
