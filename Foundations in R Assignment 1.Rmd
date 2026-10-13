@@ -25,11 +25,12 @@ participants
 condition<- rep(times=3, c("control", "experimental"))
 print(condition)
 ```
-
+this will give you a total of 6? 
 4. Create a dataframe from the variables in #1-3. 
 ```{r}
 practiceData<- cbind.data.frame(score, participants, condition)
 ```
+#this gave me an error because it only had 6 items in condition
 
 5. Take the mean of the score column from your dataframe.
 ```{r}
@@ -99,3 +100,4 @@ summary(diamondPrice$color)
 #i'm sure there was a more efficient way to go about this, but i just summarized the column and looked at the values. in this case, the color F appeared the most!
 ```
 
+this works! 
