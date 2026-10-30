@@ -32,7 +32,7 @@ print(colnames(billboard))
 ```{r}
 print(billboard[1:5])
 ```
-
+aw comment: this will print out the first 5 columns. can use head(billboard,5) or billboard[5,] 
 
 # Practice
 1. Create a subset of data that has Jay-Z as the only artist. How many songs are in it?
@@ -55,11 +55,17 @@ timSongs<- subset(billboard, billboard$artist=="McGraw, Tim")
 print(timSongs$wk1)
 #i used print instead of summarize because this is data about the position of the songs in week one, which is numerical in nature but not data where a mean would be useful, for example. This just tells me he had one song in 85th, one song in 73rd, and one song in 76th on the charts at this time.
 ```
+AW comment: could force summary to do this by doing as.factor(data$wk1)
 
 4. Create a function that can be used to determine if Britney Spears sang the song. 
 ```{r}
 didBritneySingIt<- function(songs){billboard$ARTIST=="Spears, Britney"}
 ```
+this isn't a general function. your argument (songs) isn't used in the "what to do" section
+consider
+didBritney<- function(song){
+song=="spears, britney"
+}
 
 5. Test your function on the billboard data. Save the results to a new column called "wasItBritney"
 ```{r}
