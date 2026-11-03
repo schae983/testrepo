@@ -30,6 +30,7 @@ sleepLong<- gather(sleepWide, key = "extra", value = "group", c(`1`,`2`))
 ```{r}
 data(starwars)
 ```
+don't forget to load the tidyverse library in this rmd file
 
 6. Create homeworld as a factor. How many levels does it have? 
 ```{r}
