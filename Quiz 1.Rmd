@@ -28,6 +28,7 @@ humansOnly<- subset(starwars, starwars$species=="Human")
 range(humansOnly$height, na.rm= TRUE)
 #just decided to look at the range, from here I can see the tallest character is 202 cm
 ```
+that works! who is the tallest character? 
 
 5. In this subset of data, print the information about the character in the third row. 
 ```{r}
@@ -39,6 +40,7 @@ print(humansOnly[3,])
 mean(starwars$mass, na.rm= TRUE)
 #average mass is 97.31 kg
 ```
+missing subset of masculine characters
 
 7. Create a dataset that contains only the characters and the films that they appeared in from the full dataset.
 ```{r}
@@ -56,6 +58,7 @@ nabooSubset<- subset(starwars, starwars$homeworld== "Naboo")
 nrow(nabooSubset)
 #15 characters from Naboo
 ```
+i have 11? 
 
 10. How many droids are in the full dataset? 
 ```{r}
