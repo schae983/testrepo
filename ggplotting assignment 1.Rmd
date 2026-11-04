@@ -1,0 +1,64 @@
+---
+title: "ggplot pt 1 assignment"
+author: "Amanda Mae Woodward"
+date: "2026-10-29"
+output: html_document
+---
+1. open the starwars dataset in tidyverse
+```{r}
+data(starwars)
+```
+
+
+2. create a graph showing the frequency of eye colors in the dataset. 
+```{r}
+ggplot(starwars, aes(eye_color)) + geom_bar()
+```
+
+
+3. Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc. 
+```{r}
+ggplot(starwars, aes(eye_color))+ geom_bar(fill = "turquoise4") + theme_classic() + labs(x = "Eye Color", y = "Character Count") + theme(axis.text.x = element_text(angle = 90, vjust = 0.6, hjust= 0.5)) + ggtitle ("Star Wars Character's Eye Color Count")
+
+#I got the code for the theme(axis.text etc from the following website: https://www.r-bloggers.com/2024/03/rotate-ggplot2-axis-labels-in-r-improve-plot-readability/
+
+#The website is really clear about what the code means, but I'll explain again: The angle command simply lets you control the angle of your labels, in this case 90 degrees. The vjust command centers the labels on your axis, so you can control where they land. The hjust command horizontally aligns your text. Or, vjust lets you adjust the "y-axis" of your labels, and hjust lets you adjust the "x-axis" that your labels are metaphorically sitting on.
+```
+
+
+4. Create a graph displaying information about character's height in each homeworld. 
+```{r}
+ggplot(starwars, aes(homeworld, height)) + geom_point()
+```
+
+
+5. Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc.
+```{r}
+ggplot(starwars, aes(height, homeworld)) + geom_point(shape = 22, color = "forestgreen") + theme_classic() + ggtitle ("Star Wars Characters Height and Homeworld") + labs (x = "Height in CM", y = "Homeworld")
+
+```
+
+
+6. Create a graph of character's height by mass. 
+```{r}
+ggplot(starwars, aes(height, mass))+ geom_point()
+```
+
+
+7.Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc.
+```{r}
+ggplot(starwars, aes(height, mass))+ geom_point(shape = 2) + labs (x = "Height in Centimeters", y = "Mass in Kilograms") + ggtitle("Star Wars Characters Height by Mass") + theme_apa() + geom_smooth(color = "cornflowerblue")
+```
+
+
+8. Add gender as a third variable to your graph of height by mass. 
+```{r}
+ggplot(starwars, aes(height, mass, color = gender))+ geom_point()
+```
+
+
+9. Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc.
+```{r}
+ggplot(starwars, aes(height, mass, color = gender))+ geom_point(shape = 8) + labs (x = "Height in Centimeters", y = "Mass in Kilograms") + ggtitle("Star Wars Characters Height, Mass, and Gender") + theme_apa() + geom_smooth(color = "chocolate")+ geom_jitter() + scale_color_manual(values = c("hotpink", "royalblue", "greenyellow"))
+```
+
