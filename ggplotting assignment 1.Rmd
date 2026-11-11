@@ -30,7 +30,7 @@ ggplot(starwars, aes(eye_color))+ geom_bar(fill = "turquoise4") + theme_classic(
 ```{r}
 ggplot(starwars, aes(homeworld, height)) + geom_point()
 ```
-
+i'd recommend a boxplot for this
 
 5. Customize your graph to make it more presentable. Consider color, backgrounds, axes, etc.
 ```{r}
