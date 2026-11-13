@@ -4,7 +4,7 @@ author: "Amanda Mae Woodward"
 date: "2026-11-03"
 output: html_document
 ---
-
+AW : don't forget to open the tidyverse dataset
 1. Open the starwars dataset (located in tidyverse)
 ```{r}
 data(starwars)
