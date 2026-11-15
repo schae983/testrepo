@@ -1,0 +1,70 @@
+---
+title: "Quiz 3"
+author: "Amanda Mae Woodward"
+date: "2025-10-30"
+output: html_document
+---
+1. Load the spotify dataset (available in github repository).
+```{r}
+spotifyDat <- read_csv("~/Downloads/spotifyDat Fall26.csv")
+```
+
+2. Create a bar graph of the artist column (Hint: use theme(axis.text.x = element_text(angle = 90)) to rotate the x axis).
+```{r}
+ggplot(diamonds, aes(clarity)) + geom_bar()
+
+ggplot(spotifyDat, aes(artist)) + geom_bar() + theme(axis.text.x = element_text(angle = 90)) + theme_classic()
+```
+
+3. Add genre as a third variable in your graph.
+```{r}
+ggplot(spotifyDat, aes(artist, color = genre)) + geom_bar() + theme(axis.text.x = element_text(angle = 90)) + theme_classic()
+
+```
+
+4. Use color brewer to add color to your graph in 3. 
+```{r}
+library(RColorBrewer)
+ggplot(spotifyDat, aes(artist, color = genre)) + geom_bar() + theme(axis.text.x = element_text(angle = 90)) + theme_classic() + scale_color_brewer(palette = "PuBuGn")
+```
+
+5. Place the legend for the graph you made in 3 on the bottom of the graph. 
+```{r}
+ggplot(spotifyDat, aes(artist, color = genre)) + geom_bar() + theme(axis.text.x = element_text(angle = 90)) + theme_classic() + scale_color_brewer(palette = "PuBuGn") + theme(legend.position = "bottom")
+```
+
+As you probably recognized, the graph you made is really hard to read.
+
+6. Separate the genre column into multiple columns (e.g. so each genre listed is in a unique column)
+```{r}
+byGenre<- spotifyDat |> separate("genre", into = c("genre 1", "genre 2"), sep= ",")
+```
+
+7. Use these genre columns to create a dataset in long format. 
+```{r}
+byGenreLong<- gather(byGenre, key = "which genre", value = "genre", c("genre 1", "genre 2"))
+```
+
+8.use facet wrap to make graphs of artist by genre 
+```{r}
+ggplot(byGenreLong, aes(genre, artist, color = genre)) + geom_point() + facet_wrap(~"genre")
+#literally there was no way to make this look good but this is the best i could do... it looks better if you zoom i promise
+```
+
+9. Create a graph that includes the variables tempo and dancability. 
+```{r}
+ggplot(spotifyDat, aes(tempo, danceability)) + geom_point()
+```
+
+10. Add popularity as a third variable. 
+```{r}
+ggplot(spotifyDat, aes(tempo, danceability, color = popularity)) + geom_point()
+
+```
+
+11. Use viridis as a color in your graph from #10
+```{r}
+library(viridisLite)
+ggplot(spotifyDat, aes(tempo, danceability, color = as.factor(popularity))) + geom_point() + scale_colour_viridis_d(option = "plasma") + labs(color = "Popularity", x = "Tempo in BPM", y = "Danceability Rating")
+```
+
