@@ -11,8 +11,6 @@ spotifyDat <- read_csv("~/Downloads/spotifyDat Fall26.csv")
 
 2. Create a bar graph of the artist column (Hint: use theme(axis.text.x = element_text(angle = 90)) to rotate the x axis).
 ```{r}
-ggplot(diamonds, aes(clarity)) + geom_bar()
-
 ggplot(spotifyDat, aes(artist)) + geom_bar() + theme(axis.text.x = element_text(angle = 90)) + theme_classic()
 ```
 
