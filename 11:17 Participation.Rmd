@@ -1,0 +1,47 @@
+---
+title: "11/17 Participation Code"
+author: "Rory Schaefer"
+output: html_document
+date: "2026-11-17"
+---
+
+1: Make a graph with this code!
+```{r}
+ggplot(mtcars, aes(mpg, hp, color = as.factor(gear)))+ geom_point() + scale_fill_manual(values = c("chocolate", "saddlebrown", "darkorange")) + themes_classic() + labs(x = "Meters per Gallon", y = "Horsepower", legend = "Gear")
+
+```
+
+2: Open the starwars dataset, check the class of the character name data, and then turn it into a factor.
+```{r}
+data(starwars)
+class(starwars$character)
+starwarsNames<- as.factor(starwars$character)
+```
+
+
+3: Create and save a function that divides all numbers in a column by 10. Test it on the starwars mass column.
+```{r}
+divByTen<- function(number){number/10}
+starwars$mass<- divByTen
+```
+
+
+Code Solutions:
+1:
+```{r}
+ggplot(mtcars, aes(mpg, hp, color = as.factor(gear)))+ geom_point() + scale_color_manual(values = c("chocolate", "saddlebrown", "darkorange")) + theme_classic() + labs(x = "Miles per Gallon", y = "Horsepower", color = "Gear")
+```
+
+2:
+```{r}
+data(starwars)
+class(starwars$name)
+starwarsNames<- as.factor(starwars$name)
+```
+
+3:
+```{r}
+divByTen<- function(number){number/10}
+divByTen(starwars$mass)
+```
+
