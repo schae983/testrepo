@@ -1,0 +1,76 @@
+---
+title: "Statistics in R Assignment"
+author: "Rory Schaefer"
+date: "2026-11-05"
+output: html_document
+---
+
+1. Open the diamonds dataset from ggplot2. 
+```{r}
+data(diamonds)
+```
+
+2. Run a correlation between the x and y variables. What do you notice? 
+```{r}
+cor(diamonds$x, diamonds$y)
+ggplot(diamonds, aes(x, y)) + geom_point()
+cor.test(diamonds$x, diamonds$y)
+
+#they have a very strong correlation at 0.97! I made a graph just to visualize it for myself and notice there are a few outliers here but otherwise the correlation seems super linear.
+```
+
+3. What is the correlation between price and carat?
+```{r}
+cor(diamonds$price, diamonds$carat)
+cor.test(diamonds$price, diamonds$carat)
+
+#correlation is 0.92
+```
+
+4. Create a linear model predicting price from table. What is the coefficient for table? 
+```{r}
+priceLM<- lm(price~ table, data = diamonds)
+summary(priceLM)
+
+#coefficients are -9109.05 and 226.98
+```
+
+5. Run a regression and an Anova predicting price from color. What do you notice about the two types of output? 
+```{r}
+otherPriceLM<- lm(price ~ color, data = diamonds)
+summary(otherPriceLM)
+
+priceAnov<- aov(price ~ color, data = diamonds)
+summary(priceAnov)
+
+#I get a lot more information from the linear regression, including information on all of the separate colors. Both seem helpful but I'd probably steer towards a linear regression for getting more numbers off the bat.
+```
+
+6. Run a t test to determine if "D" color diamonds are more expensive than "E" color diamonds.
+```{r}
+DEDiamonds<- subset(diamonds, color == c("D", "E"))
+#making a new dataset with just D and E diamonds is the only way I could think of to make this work
+
+t.test(price ~ color, data = DEDiamonds, alternative = "greater")
+#diamonds in D are more expensive than E on average
+```
+
+7. Open the warpbreaks dataset. What test would you use to determine the correlation between wool type and breaks?
+```{r}
+data(warpbreaks)
+```
+
+8. What is the correlation between wool type and breaks? 
+```{r}
+warpbreaks$numWool<- as.numeric(warpbreaks$wool)
+cor(warpbreaks$numWool, warpbreaks$breaks)
+
+#it has a pretty weak negative correlation at -0.22
+```
+
+9. A student has a 35 question, multiple choice test. Each question has 4 choices. If they answered 17 questions correctly, did their responses differ from chance?
+```{r}
+binom.test(17, 35, p = 0.25)
+#Yes, their response was not by chance, because their p- value of 0.003 is less than a standard alpha value of 0.05
+```
+
